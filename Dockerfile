@@ -1,11 +1,16 @@
-FROM microsoft/dotnet:2.2-sdk
+FROM microsoft/dotnet:sdk AS build-env
+WORKDIR /app
 
-RUN git clone https://github.com/clintnetwork/StratisExplorerApi.git \
-    && cd /StratisExplorerApi/ \
-	&& dotnet build
+# Copy csproj and restore as distinct layers
+COPY *.csproj ./
+RUN dotnet restore
 
-WORKDIR /StratisExplorerApi/
+# Copy everything else and build
+COPY . ./
+RUN dotnet publish -c Release -o out
 
-EXPOSE 5000
-
-CMD ["dotnet", "run"]
+# Build runtime image
+FROM microsoft/dotnet:aspnetcore-runtime
+WORKDIR /app
+COPY --from=build-env /app/out .
+ENTRYPOINT ["dotnet", "StratisExplorerApi.dll"]
