@@ -9,6 +9,6 @@ apt update && apt upgrade -y
 apt install git curl docker
 git clone https://github.com/ToniGalmes/StratisExplorerMobile.git
 cd StratisExplorerMobile
-docker build . -t StratisExplorerMobile
-docker run StratisExplorerMobile -d -p 80:80
+docker build . -t stratis-explorer-mobile
+docker run stratis-explorer-mobile -d -p 80:80
 ```
