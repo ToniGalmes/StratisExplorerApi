@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using StratisExplorerApi.Settings;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace StratisExplorerApi
@@ -25,6 +26,8 @@ namespace StratisExplorerApi
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<NakoApiSettings>(Configuration.GetSection("NakoApi"));
+            
             services.AddDistributedMemoryCache();
 
             services.AddMvc();
