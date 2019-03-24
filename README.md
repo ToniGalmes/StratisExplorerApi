@@ -7,7 +7,7 @@ Provide a cache logic for the stratis.guru API
 ```bash
 apt update && apt upgrade -y
 apt install git curl docker docker.io
-git clone https://github.com/ToniGalmes/StratisExplorerMobile.git
+git clone https://github.com/clintnetwork/StratisExplorerApi.git
 cd StratisExplorerMobile
 docker build . -t stratis-explorer-mobile
 docker run stratis-explorer-mobile -d -p 80:80
