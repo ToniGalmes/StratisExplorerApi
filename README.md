@@ -10,5 +10,5 @@ apt install git curl docker docker.io
 git clone https://github.com/clintnetwork/StratisExplorerApi.git
 cd StratisExplorerApi
 docker build . -t stratis-explorer-api
-docker run stratis-explorer-api -d -p 80:80
+docker run -d -p 5000:5000 stratis-explorer-api
 ```
